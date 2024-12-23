@@ -3,6 +3,14 @@ from azure.storage.blob import BlobServiceClient
 from datetime import datetime
 import os
 
+# Fetch connection string from environment variable
+connection_string = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
+
+# Raise an error if the connection string is not set
+if not connection_string:
+    raise ValueError("AZURE_STORAGE_CONNECTION_STRING is not set or is invalid.")
+
+
 # Fetch weather data from API
 def fetch_weather_data():
     api_url = f"https://api.openweathermap.org/data/2.5/weather?q=London&appid={os.getenv('WEATHER_API_KEY')}"
