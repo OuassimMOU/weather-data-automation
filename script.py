@@ -15,7 +15,9 @@ if not connection_string:
 def fetch_weather_data():
     api_url = f"https://api.openweathermap.org/data/2.5/weather?q=London&appid={os.getenv('WEATHER_API_KEY')}"
     response = requests.get(api_url)
-    return response.json()
+    weather_data = response.json()
+    print(weather_data)  # Add this to verify the API response
+    return weather_data
 
 # Upload data to Azure Blob Storage
 def upload_to_blob(data):
