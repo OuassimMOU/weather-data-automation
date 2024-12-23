@@ -9,7 +9,7 @@ def fetch_weather_data():
     """
     try:
         # Retrieve API key from environment variable
-        api_key = os.getenv("c59bbe0dbd96f4eabb520d5654461630")
+        api_key = os.getenv("WEATHER_API_KEY")  # Use the correct environment variable name
         if not api_key:
             raise ValueError("Environment variable WEATHER_API_KEY is not set or is invalid.")
 
@@ -36,7 +36,7 @@ def upload_to_blob(data):
     """
     try:
         # Retrieve Azure Storage connection string from environment variable
-        connection_string = os.getenv("DefaultEndpointsProtocol=https;AccountName=weatherdatastorage003;AccountKey=Lt/2d2TasBpSQMoGeTbxShZmcHYDzKwwNwoB5kmwF2c2YnzCry/lGxhcDgtD8iR5s6RAcHnGOllc+AStS6O+vw==;EndpointSuffix=core.windows.net")
+        connection_string = os.getenv("AZURE_STORAGE_CONNECTION_STRING")  # Use the correct environment variable name
         if not connection_string:
             raise ValueError("Environment variable AZURE_STORAGE_CONNECTION_STRING is not set or is invalid.")
 
