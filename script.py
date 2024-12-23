@@ -11,7 +11,11 @@ def fetch_weather_data():
 
 # Upload data to Azure Blob Storage
 def upload_to_blob(data):
+    
     connection_string = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
+if not connection_string:
+    raise ValueError("AZURE_STORAGE_CONNECTION_STRING is not set or is invalid.")
+
     blob_service_client = BlobServiceClient.from_connection_string(connection_string)
     container_name = "rawweatherdata"
     blob_name = f"weatherdata_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}.json"
