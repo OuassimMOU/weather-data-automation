@@ -7,11 +7,13 @@ def fetch_weather_data():
     """
     Fetch weather data from OpenWeatherMap API.
     """
+def fetch_weather_data():
     try:
-        # Retrieve API key from environment variable
-        api_key = os.getenv("WEATHER_API_KEY")  # Use the correct environment variable name
+        api_key = os.getenv("WEATHER_API_KEY")
+        print(f"Retrieved API key: {api_key}")  # Add this line
         if not api_key:
             raise ValueError("Environment variable WEATHER_API_KEY is not set or is invalid.")
+
 
         # API endpoint
         city = "London"  # Replace with your desired city
