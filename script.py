@@ -3,17 +3,20 @@ import requests
 from azure.storage.blob import BlobServiceClient
 from datetime import datetime
 
+# Debugging: Print out environment variables
+api_key = os.getenv("WEATHER_API_KEY")
+print(f"Retrieved API Key: {api_key}")
+
+connection_string = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
+print(f"Retrieved Connection String: {connection_string}")
+
 def fetch_weather_data():
     """
     Fetch weather data from OpenWeatherMap API.
     """
-def fetch_weather_data():
     try:
-        api_key = os.getenv("WEATHER_API_KEY")
-        print(f"Retrieved API key: {api_key}")  # Add this line
         if not api_key:
             raise ValueError("Environment variable WEATHER_API_KEY is not set or is invalid.")
-
 
         # API endpoint
         city = "London"  # Replace with your desired city
@@ -37,8 +40,6 @@ def upload_to_blob(data):
     Upload data to Azure Blob Storage.
     """
     try:
-        # Retrieve Azure Storage connection string from environment variable
-        connection_string = os.getenv("AZURE_STORAGE_CONNECTION_STRING")  # Use the correct environment variable name
         if not connection_string:
             raise ValueError("Environment variable AZURE_STORAGE_CONNECTION_STRING is not set or is invalid.")
 
